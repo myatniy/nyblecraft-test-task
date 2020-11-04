@@ -1,0 +1,200 @@
+$font-name: Helvetica, Arial, sans-serif;
+$font-color: #D8DEE9;
+$cursor-hovering: rgba(white, 0.4);
+$cursor-clicking: rgba(white, 0.2);
+
+%flexbox-column {
+    display: flex;
+    flex-flow: column;
+}
+
+%flexbox-row-nowrap {
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+%flexbox-row-wrap {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+%ul-rid-of-default-style {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+%button-rid-of-default-style {
+    display: inline-block;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: $font-name;
+}
+
+body {
+    color: $font-color;
+    background-color: #2E3440;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid $font-color;
+    margin-bottom: 6px;
+}
+
+.vertical-line {
+    border: none;
+    border-left: 1px solid #2E3440;
+    height: auto;
+    margin: 0 4px;
+}
+
+.app-container {
+    @extend %flexbox-column;
+    align-items: center;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1080px;
+}
+
+.app-container-helper {
+    @extend %flexbox-column;
+    align-items: stretch;
+    width: auto;
+    border: 8px double #E5E9F0;
+    padding: 10px;
+}
+
+.app-container-helper h1 {
+    align-self: center;
+}
+
+.tags-container {
+    @extend %flexbox-row-wrap;
+    justify-content: center;
+    margin: 10px 0;
+}
+
+.tags-container button {
+    @extend %button-rid-of-default-style;
+    padding: 10px;
+    margin: 4px;
+    border-radius: 16px;
+    background-color: #2E3440;
+    border: 2px solid $font-color;
+    color: $font_color;
+}
+
+.tags-container button:hover {
+    cursor: pointer;
+    background-color: $font-color;
+    color: #2E3440;
+}
+
+.tags-container button:active {
+    border-color: #2E3440;
+}
+
+.tags-container button:focus {
+    outline: none;
+}
+
+.list-of-notes {
+    @extend %flexbox-column;
+    @extend %ul-rid-of-default-style;
+}
+
+.list-of-notes__note {
+    background-color: #3B4252;
+    padding: 6px;
+    margin-bottom: 12px;
+}
+
+.list-of-notes__note:first-child {
+    margin-top: 6px;
+}
+
+.list-of-notes__buttons-container {
+    @extend %flexbox-row-nowrap;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+.list-of-notes__buttons-container button {
+    @extend %button-rid-of-default-style;
+    background-color: #D8DEE9;
+    padding: 2px 5px;
+    border-radius: 0;
+}
+
+.list-of-notes__buttons-container button:hover {
+    cursor: pointer;
+    background: $cursor-hovering;
+}
+
+.list-of-notes__buttons-container button:active {
+    background: $cursor-clicking;
+}
+
+.list-of-notes__buttons-container button:focus {
+    outline: none;
+}
+
+.list-of-notes__note-text {
+    padding: 0 16px;
+    margin-bottom: 4px;
+}
+
+.list-of-notes__note-tags-container {
+    @extend %flexbox-row-wrap;
+    margin-bottom: 0;
+    justify-content: center;
+    align-content: center;
+}
+
+.list-of-notes__tag-and-button {
+    display: flex;
+    flex-flow: row nowrap;
+    align-content: center;
+    justify-content: center;
+    background-color: #D8DEE9;
+    color: #2E3440;
+    padding: 2px 5px;
+    border-radius: 0;
+    margin: 2px 6px;
+}
+
+.list-of-notes__tag-and-button span {
+    display: inline-block;
+    padding: 2px;
+}
+
+.list-of-notes__tag-and-button button {
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    background-color: $font-color;
+    color: #2E3440;
+    border-radius: 0;
+    padding: 4px 8px;
+}
+
+.list-of-notes__tag-and-button button:hover {
+    cursor: pointer;
+    background-color: rgba(black, 0.2);;
+}
+
+.list-of-notes__tag-and-button button:active {
+    background-color: rgba(black, 0.4);;
+}
+
+.list-of-notes__tag-and-button button:focus {
+    outline: none;
+}
