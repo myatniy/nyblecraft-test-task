@@ -1,9 +1,9 @@
-.list-of-notes, .app-container-helper, .app-container {
+.list-of-notes, .app-container {
   display: flex;
   flex-flow: column;
 }
 
-.list-of-notes__buttons-container {
+.list-of-notes__tag-and-button, .list-of-notes__buttons-container {
   display: flex;
   flex-flow: row nowrap;
 }
@@ -46,23 +46,16 @@ hr {
 .vertical-line {
   border: none;
   border-left: 1px solid #2E3440;
-  height: auto;
+  height: 100%;
   margin: 0 4px;
 }
 
 .app-container {
   align-items: center;
-  margin-top: 10px;
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 1080px;
-}
-
-.app-container-helper {
-  align-items: stretch;
-  width: auto;
-  border: 8px double #E5E9F0;
+  width: 500px;
+  background-color: #4C566A;
   padding: 10px;
+  margin: 0 auto;
 }
 
 .app-container-helper h1 {
@@ -95,6 +88,10 @@ hr {
 
 .tags-container button:focus {
   outline: none;
+}
+
+.list-of-notes {
+  width: 100%;
 }
 
 .list-of-notes__note {
@@ -143,10 +140,7 @@ hr {
 }
 
 .list-of-notes__tag-and-button {
-  display: flex;
-  flex-flow: row nowrap;
-  align-content: center;
-  justify-content: center;
+  align-items: center;
   background-color: #D8DEE9;
   color: #2E3440;
   padding: 2px 5px;
