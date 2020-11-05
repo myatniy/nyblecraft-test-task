@@ -6,7 +6,8 @@ import data from '../data/notes-data';
 import TodoListAddNote from "./todo-list-add-note";
 
 function findHashtags (text) {
-    const regexHashtags = /(#[a-z0-9][a-z0-9\-_]*)/ig;
+    // const regexHashtags = /(#[a-z0-9][a-z0-9\-_]*)/ig;
+    const regexHashtags = /#\S*/ig;
     const hashtags = text.match(regexHashtags);
 
     return hashtags ? hashtags : [];

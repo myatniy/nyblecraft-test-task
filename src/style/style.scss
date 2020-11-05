@@ -32,6 +32,7 @@ $cursor-clicking: rgba(white, 0.2);
 }
 
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
     font-family: $font-name;
@@ -66,6 +67,48 @@ hr {
 
 .app-container-helper h1 {
     align-self: center;
+}
+
+.add-note-container {
+    @extend %flexbox-row-nowrap;
+    margin-top: 8px;
+    width: 100%;
+}
+
+.add-note-container input {
+    width: 100%;
+    padding: 4px 8px;
+    font-size: 20px;
+    border: none;
+    background-color: #3B4252;
+    border-bottom: 2px solid $font-color;
+    border-radius: 0;
+    color: $font-color;
+}
+
+.add-note-container button {
+    width: 60px;
+    font-size: 25px;
+    border: 0;
+    border-radius: 0;
+    background-color: $font-color;
+}
+
+.add-note-container button:hover {
+    cursor: pointer;
+    background-color: $cursor-hovering;
+}
+
+.add-note-container button:active {
+    background-color: $cursor-clicking;
+}
+
+.add-note-container button:focus {
+    outline: none;
+}
+
+.add-note-container input:focus {
+    outline: none;
 }
 
 .tags-container {
