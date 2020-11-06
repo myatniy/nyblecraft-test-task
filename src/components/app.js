@@ -6,11 +6,10 @@ import data from '../data/notes-data';
 import TodoListAddNote from "./todo-list-add-note";
 
 function findHashtags (text) {
-    // const regexHashtags = /(#[a-z0-9][a-z0-9\-_]*)/ig;
     const regexHashtags = /#\S*/ig;
     const hashtags = text.match(regexHashtags);
 
-    return hashtags ? hashtags : [];
+    return hashtags ? hashtags : new Array();
 }
 
 function ejectHashtagsFromText (text) {
@@ -48,7 +47,7 @@ function App () {
     //     }
     // ];
 
-    const [notes, useNotes] = useState(data);
+    const [notes, setNotes] = useState(data);
 
     const tags = new Set();
     // generate unique id
@@ -57,15 +56,6 @@ function App () {
     notes.forEach(item =>
         item.tags.forEach(item => tags.add(item))
     );
-
-    useEffect(() => {
-        document.title = `Кол-во заметок: ${notes.length}`;
-    });
-
-    // const EditNote = (id, text) => {
-    //     const indexOfItemToEdit = notes.findIndex(item => item.id === id);
-    //     const notesWithEditedItem =
-    // }
 
     const AddNote = (text) => {
         const notesWithNewItem = [...notes];
@@ -76,7 +66,7 @@ function App () {
             tags: findHashtags(text)
         });
 
-        useNotes(notesWithNewItem);
+        setNotes(notesWithNewItem);
     };
 
     const DeleteNote = (id) => {
@@ -86,8 +76,26 @@ function App () {
             ...notes.slice(indexOfItemToDelete + 1)
         ];
 
-        useNotes(notesWithoutDeletedItem);
+        setNotes(notesWithoutDeletedItem);
     };
+
+    const DeleteTag = (id, e) => {
+        e.preventDefault();
+        const notesCopy = [...notes];
+        const hashtagToDelete = e.target.value;
+        const indexOfItemWithTagToDelete = notes
+            .findIndex(item => item.id === id);
+        // filter out deleted tag
+        notesCopy[indexOfItemWithTagToDelete]["tags"] =
+            notes[indexOfItemWithTagToDelete]["tags"]
+                .filter(item => item !== hashtagToDelete);
+
+        setNotes(notesCopy);
+    }
+
+    useEffect(() => {
+        document.title = `Кол-во заметок: ${notes.length}`;
+    });
 
     return (
         <div className="app-container">
@@ -96,6 +104,7 @@ function App () {
             <TagFilter tags={ [...tags] } />
             <TodoList
                 notes={ notes }
+                onDeletedTag = { DeleteTag }
                 onDeleted={ DeleteNote } />
         </div>
     );

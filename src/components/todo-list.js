@@ -1,7 +1,7 @@
 import React from 'react';
 import TodoListItem from './todo-list-item';
 
-function TodoList ({ notes, onDeleted }) {
+function TodoList ({ notes, onDeleted, onDeletedTag }) {
 
     const notesTransformed = notes.map(
             ({ id, note, tags }) => <TodoListItem
@@ -9,6 +9,7 @@ function TodoList ({ notes, onDeleted }) {
                 note={ note }
                 tags={ tags }
                 onDeleted= { () => onDeleted(id) }
+                onDeletedTag={ (e) => onDeletedTag(id, e) }
             />
         );
 

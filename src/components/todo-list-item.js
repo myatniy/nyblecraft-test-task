@@ -1,13 +1,18 @@
 import React from 'react';
 
-const TodoListItem = ({ note, tags, onDeleted }) => {
+const TodoListItem = ({ note, tags, onDeleted, onDeletedTag }) => {
 
     const tagsFormatted = [];
     tags.forEach(item => tagsFormatted.push(
             <div className="list-of-notes__tag-and-button">
-                <span>{item}</span>
+                <span>{ item }</span>
                 <hr className="vertical-line" />
-                <button>X</button>
+                <button
+                    onClick={ onDeletedTag }
+                    value={ item }
+                >
+                    X
+                </button>
             </div>
         ));
 
@@ -15,9 +20,9 @@ const TodoListItem = ({ note, tags, onDeleted }) => {
         <li className="list-of-notes__note">
             <div className="list-of-notes__buttons-container">
                 <button>edit</button>
-                <button onClick={onDeleted}>X</button>
+                <button onClick={ onDeleted }>X</button>
             </div>
-            <p className="list-of-notes__note-text">{note}</p>
+            <p className="list-of-notes__note-text">{ note }</p>
             <hr />
             {
                 (tagsFormatted.length > 0)
