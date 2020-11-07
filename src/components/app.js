@@ -141,7 +141,10 @@ function App () {
     return (
         <div className="app-container">
             <h1>Todo Application</h1>
-            <TodoListAddNote onAdded={ AddNote } />
+            <TodoListAddNote
+                onAdded={ AddNote }
+                isFiltered={ isFiltered }
+            />
             <TagFilter
                 tags={ [...tags] }
                 isFiltered={ isFiltered }
@@ -150,6 +153,7 @@ function App () {
             />
             <TodoList
                 notes={ notes }
+                isFiltered={ isFiltered }
                 onDeletedTag = { DeleteTag }
                 onDeleted={ DeleteNote }
                 onEdited={ EditNote }

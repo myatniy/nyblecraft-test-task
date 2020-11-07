@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const TodoListItem = ({ id, note, tags, onDeleted, onDeletedTag, onEdited }) => {
+const TodoListItem = ({ id, note, tags, isFiltered, onDeleted, onDeletedTag, onEdited }) => {
 
     const [isEditing, setIsEditing] = useState(false);
     const [newTextOfNote, setNewTextOfNote] = useState('');
@@ -64,24 +64,22 @@ const TodoListItem = ({ id, note, tags, onDeleted, onDeletedTag, onEdited }) => 
                 </div>
             </form>
         </>
-    )
+    );
 
-    // const noteEditMode2 = (
-    //     <>
-    //         <form onSubmit={ HandleSubmit }>
-    //             <input
-    //                 type="text"
-    //                 placeholder="Type in new note text here"
-    //                 value={newTextOfNote}
-    //                 onChange={HandleChange}
-    //             />
-    //             <div className="list-of-notes__note-edit-mode-buttons">
-    //                 <button className="btn">Save</button>
-    //                 <button className="btn" onClick={() => setIsEditing(false)}>Cancel</button>
-    //             </div>
-    //         </form>
-    //     </>
-    // )
+    if (isFiltered) {
+        const tagsFormattedWhenFiltered = [];
+        tags.forEach(item => tagsFormattedWhenFiltered.push(<span>{ item }</span>));
+
+        return (
+            <li className="list-of-notes__note">
+                <p className="list-of-notes__note-text">{ note }</p>
+                <hr />
+                <div className="list-of-notes__tagsWhenFiltered">
+                    { tagsFormattedWhenFiltered }
+                </div>
+            </li>
+        );
+    }
 
     return (
         <li className="list-of-notes__note">

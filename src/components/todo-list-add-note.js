@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const TodoListAddNote = ({ onAdded }) => {
+const TodoListAddNote = ({ onAdded, isFiltered }) => {
     const [input, setInput] = useState('');
 
     const OnTextChanged = (e) => {
@@ -15,19 +15,23 @@ const TodoListAddNote = ({ onAdded }) => {
         setInput('');
     }
 
+    if (isFiltered) {
+        return null;
+    }
+
     return (
-      <form
-          className='add-note-container'
-          onSubmit={OnTextSubmitted}
-      >
-          <input
-              type="text"
-              placeholder="new note"
-              value={input}
-              onChange={OnTextChanged}
-          />
-          <button>+</button>
-      </form>
+        <form
+            className='add-note-container'
+            onSubmit={OnTextSubmitted}
+        >
+            <input
+                type="text"
+                placeholder="new note"
+                value={input}
+                onChange={OnTextChanged}
+            />
+            <button>+</button>
+        </form>
     );
 }
 
