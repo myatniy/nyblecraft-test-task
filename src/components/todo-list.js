@@ -1,23 +1,23 @@
-import React, { useState } from 'react';
+import React from 'react';
 import TodoListItem from './todo-list-item';
 
 function TodoList ({ notes, onDeleted, onDeletedTag, onEdited }) {
 
-    const { isEditing, setEditing } = useState(false);
-
-    const noteViewMode = notes.map(
+    const note = notes.map(
             ({ id, note, tags }) => <TodoListItem
+                id={ id }
                 key={ id }
                 note={ note }
                 tags={ tags }
                 onDeleted= { () => onDeleted(id) }
                 onDeletedTag={ (e) => onDeletedTag(id, e) }
+                onEdited={onEdited}
             />
         );
 
     return (
         <ul className="list-of-notes">
-            { noteViewMode }
+            { note }
         </ul>
     );
 }

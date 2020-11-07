@@ -72,14 +72,20 @@ function App () {
     };
 
     const EditNote = (id, newText) => {
-        const notesWithEditedItem = notes.map(item => {
+        const newNotesArray = [];
+
+        notes.map(item => {
             if (id === item.id) {
-                return {...item, note: newText};
+                return newNotesArray.push({
+                    id,
+                    note: ejectHashtagsFromText(newText),
+                    tags: findHashtags(newText)
+                });
             }
-            return item;
+            return newNotesArray.push(item);
         });
 
-        setNotes(notesWithEditedItem);
+        setNotes(newNotesArray);
     };
 
     const DeleteNote = (id) => {

@@ -49,6 +49,15 @@ hr {
     margin-bottom: 6px;
 }
 
+textarea {
+    resize: none;
+    background-color: #3B4252;
+    width: 100%;
+    color: $font-color;
+    font-size: 16px;
+    padding: 6px;
+}
+
 .vertical-line {
     border: none;
     border-left: 1px solid #2E3440;
@@ -230,5 +239,32 @@ hr {
 }
 
 .list-of-notes__tag-and-button button:focus {
+    outline: none;
+}
+
+.list-of-notes__note-edit-mode-buttons {
+    @extend %flexbox-row-nowrap;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.btn {
+    @extend %button-rid-of-default-style;
+    width: 100%;
+    background-color: $font-color;
+    margin: 0 6px;
+    font-size: 16px;
+}
+
+.btn:hover {
+    cursor: pointer;
+    background-color: $cursor-hovering;
+}
+
+.btn:active {
+    background-color: $cursor-clicking;
+}
+
+.btn:focus {
     outline: none;
 }
