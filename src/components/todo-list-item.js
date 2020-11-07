@@ -16,6 +16,14 @@ const TodoListItem = ({ note, tags, onDeleted, onDeletedTag }) => {
             </div>
         ));
 
+    const tagsFormattedWithConditionalRendering = (tagsFormatted.length > 0)
+        ?
+            <div className="list-of-notes__note-tags-container">
+                {tagsFormatted}
+            </div>
+        :
+            null;
+
     return (
         <li className="list-of-notes__note">
             <div className="list-of-notes__buttons-container">
@@ -24,17 +32,7 @@ const TodoListItem = ({ note, tags, onDeleted, onDeletedTag }) => {
             </div>
             <p className="list-of-notes__note-text">{ note }</p>
             <hr />
-            {
-                (tagsFormatted.length > 0)
-                    ?
-                        (
-                            <div className="list-of-notes__note-tags-container">
-                                {tagsFormatted}
-                            </div>
-                        )
-                    :
-                        null
-            }
+            { tagsFormattedWithConditionalRendering }
         </li>
     );
 }

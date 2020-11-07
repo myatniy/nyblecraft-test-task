@@ -9,7 +9,7 @@ function findHashtags (text) {
     const regexHashtags = /#\S*/ig;
     const hashtags = text.match(regexHashtags);
 
-    return hashtags ? hashtags : new Array();
+    return hashtags ? hashtags : [];
 }
 
 function ejectHashtagsFromText (text) {
@@ -48,6 +48,8 @@ function App () {
     // ];
 
     const [notes, setNotes] = useState(data);
+    const [isFiltered, setIsFiltered] = useState(false);
+    const [notesBeforeFilter, setNotesBeforeFilter] = useState([]);
 
     const tags = new Set();
     // generate unique id
@@ -67,6 +69,17 @@ function App () {
         });
 
         setNotes(notesWithNewItem);
+    };
+
+    const EditNote = (id, newText) => {
+        const notesWithEditedItem = notes.map(item => {
+            if (id === item.id) {
+                return {...item, note: newText};
+            }
+            return item;
+        });
+
+        setNotes(notesWithEditedItem);
     };
 
     const DeleteNote = (id) => {
@@ -91,6 +104,28 @@ function App () {
                 .filter(item => item !== hashtagToDelete);
 
         setNotes(notesCopy);
+    };
+
+    const FilterNotes = (value) => {
+        setNotesBeforeFilter(notes);
+
+        const notesCopy = [...notes];
+        const arrOfFilteredValues = [];
+        const filteredData = [];
+        notesCopy.map(item => arrOfFilteredValues.push(item.tags.filter(item => item === value)));
+        for (let i = 0; i < notesCopy.length; i++) {
+            if (arrOfFilteredValues[i].length > 0) {
+                filteredData.push(notesCopy[i])
+            }
+        }
+
+        setIsFiltered(true);
+        setNotes(filteredData);
+    }
+
+    const ResetFilter = () => {
+        setNotes(notesBeforeFilter);
+        setIsFiltered(false);
     }
 
     useEffect(() => {
@@ -101,11 +136,18 @@ function App () {
         <div className="app-container">
             <h1>Todo Application</h1>
             <TodoListAddNote onAdded={ AddNote } />
-            <TagFilter tags={ [...tags] } />
+            <TagFilter
+                tags={ [...tags] }
+                isFiltered={ isFiltered }
+                onTagsFiltered={ FilterNotes }
+                onFilterReset={ ResetFilter }
+            />
             <TodoList
                 notes={ notes }
                 onDeletedTag = { DeleteTag }
-                onDeleted={ DeleteNote } />
+                onDeleted={ DeleteNote }
+                onEdited={ EditNote }
+            />
         </div>
     );
 }

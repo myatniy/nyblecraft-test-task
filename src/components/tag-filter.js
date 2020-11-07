@@ -1,9 +1,17 @@
 import React from 'react';
 
-function TagFilter ({ tags }) {
+function TagFilter ({ tags, isFiltered, onTagsFiltered, onFilterReset }) {
     const tagsMapped = [];
-    // I've lost track of my thoughts here
-    tags.forEach(item => tagsMapped.push(<button>{item}</button>));
+
+    if (isFiltered) {
+        tagsMapped.push(
+            <button onClick={() => onFilterReset()}>Сбросить фильтр</button>
+        )
+    } else {
+        tags.forEach(item => tagsMapped.push(
+            <button value={item} onClick={() => onTagsFiltered(item)}>{item}</button>
+        ));
+    }
 
     return <div className="tags-container">{tagsMapped}</div>;
 }
