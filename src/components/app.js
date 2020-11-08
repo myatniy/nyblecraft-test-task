@@ -19,34 +19,6 @@ function ejectHashtagsFromText (text) {
 }
 
 function App () {
-    // const data = [
-    //     {
-    //         id: 0,
-    //         note: "Создание, редактирование, просмотр и удаление заметок",
-    //         tags: ["#редактирование", "#создание"]
-    //     },
-    //     {
-    //         id: 1,
-    //         note: "Фильтр заметок по тегу",
-    //         tags: []
-    //     },
-    //     {
-    //         id: 2,
-    //         note: "Добавление и удаление тегов из списка",
-    //         tags: []
-    //     },
-    //     {
-    //         id: 3,
-    //         note: "Данные хранить в json- файле",
-    //         tags: ["#Данные"]
-    //     },
-    //     {
-    //         id: 4,
-    //         note: "Данные хранить в файле",
-    //         tags: ["#Данные", "#хранить"]
-    //     }
-    // ];
-
     const [notes, setNotes] = useState(data);
     const [isFiltered, setIsFiltered] = useState(false);
     const [notesBeforeFilter, setNotesBeforeFilter] = useState([]);

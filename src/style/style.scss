@@ -193,6 +193,7 @@ textarea {
 }
 
 .list-of-notes__note-text {
+    overflow: auto;
     padding: 0 16px;
     margin-bottom: 4px;
 }
@@ -260,7 +261,7 @@ textarea {
 .list-of-notes__note-edit-mode-buttons {
     @extend %flexbox-row-nowrap;
     justify-content: space-between;
-    margin-top: 10px;
+    margin-top: 4px;
 }
 
 .btn {
@@ -282,4 +283,17 @@ textarea {
 
 .btn:focus {
     outline: none;
+}
+
+.list-of-notes__note-edit-mode-hashtags {
+    @extend %flexbox-row-wrap;
+    align-items: center;
+}
+
+.list-of-notes__note-edit-mode-hashtags span {
+    display: inline-block;
+    margin-left: 6px;
+    margin-bottom: 3px;
+    padding: 4px;
+    background-color: #4C566A;
 }

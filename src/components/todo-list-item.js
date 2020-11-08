@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 
 const TodoListItem = ({ id, note, tags, isFiltered, onDeleted, onDeletedTag, onEdited }) => {
-
     const [isEditing, setIsEditing] = useState(false);
     const [newTextOfNote, setNewTextOfNote] = useState('');
 
@@ -21,38 +20,35 @@ const TodoListItem = ({ id, note, tags, isFiltered, onDeleted, onDeletedTag, onE
             <div className="list-of-notes__tag-and-button">
                 <span>{ item }</span>
                 <hr className="vertical-line" />
-                <button
-                    onClick={ onDeletedTag }
-                    value={ item }
-                >
-                    X
-                </button>
+                <button onClick={ onDeletedTag } value={ item }>X</button>
             </div>
         ));
 
-    const tagsFormattedWithConditionalRendering = (tagsFormatted.length > 0)
-        ?
+    const tagsFormattedWithConditionalRendering = (tagsFormatted.length > 0) ?
             <div className="list-of-notes__note-tags-container">
                 { tagsFormatted }
             </div>
         :
             null;
 
-    const noteViewMode = (
-        <>
-            <div className="list-of-notes__buttons-container">
-                <button onClick={() => setIsEditing(true)}>edit</button>
-                <button onClick={ onDeleted }>X</button>
-            </div>
-            <p className="list-of-notes__note-text">{ note }</p>
-            <hr />
-            { tagsFormattedWithConditionalRendering }
-        </>
-    );
+    if (isFiltered === false && isEditing === false) {
+        return (
+            <li className="list-of-notes__note">
+                <div className="list-of-notes__buttons-container">
+                    <button onClick={() => setIsEditing(true)}>edit</button>
+                    <button onClick={ onDeleted }>X</button>
+                </div>
+                <p className="list-of-notes__note-text">{ note }</p>
+                <hr />
+                { tagsFormattedWithConditionalRendering }
+            </li>
+        );
+    }
 
-    const noteEditMode = (
-        <>
-            <form onSubmit={HandleSubmit}>
+    if (isFiltered === false && isEditing === true) {
+        return (
+            <li className="list-of-notes__note">
+                <form onSubmit={HandleSubmit}>
                 <textarea
                     placeholder="Type in new text here"
                     value={newTextOfNote}
@@ -62,9 +58,10 @@ const TodoListItem = ({ id, note, tags, isFiltered, onDeleted, onDeletedTag, onE
                     <input className="btn" type="submit" value="Save"/>
                     <button className="btn" onClick={() => setIsEditing(false)}>Cancel</button>
                 </div>
-            </form>
-        </>
-    );
+                </form>
+            </li>
+        );
+    }
 
     if (isFiltered) {
         const tagsFormattedWhenFiltered = [];
@@ -80,12 +77,6 @@ const TodoListItem = ({ id, note, tags, isFiltered, onDeleted, onDeletedTag, onE
             </li>
         );
     }
-
-    return (
-        <li className="list-of-notes__note">
-            {isEditing ? noteEditMode : noteViewMode}
-        </li>
-    );
 }
 
 export default TodoListItem;
