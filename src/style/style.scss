@@ -68,7 +68,8 @@ textarea {
 .app-container {
     @extend %flexbox-column;
     align-items: center;
-    width: 500px;
+    min-width: 360px;
+    max-width: 500px;
     background-color: #4C566A;
     padding: 10px;
     margin: 0 auto;
