@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/nyblecraft-test-task/static/css/main.56e42a21.chunk.css",
-    "main.js": "/nyblecraft-test-task/static/js/main.4b0f7171.chunk.js",
-    "main.js.map": "/nyblecraft-test-task/static/js/main.4b0f7171.chunk.js.map",
+    "main.css": "/nyblecraft-test-task/static/css/main.91cab4d5.chunk.css",
+    "main.js": "/nyblecraft-test-task/static/js/main.297ee340.chunk.js",
+    "main.js.map": "/nyblecraft-test-task/static/js/main.297ee340.chunk.js.map",
     "runtime-main.js": "/nyblecraft-test-task/static/js/runtime-main.5ce528e3.js",
     "runtime-main.js.map": "/nyblecraft-test-task/static/js/runtime-main.5ce528e3.js.map",
     "static/js/2.d9fff181.chunk.js": "/nyblecraft-test-task/static/js/2.d9fff181.chunk.js",
     "static/js/2.d9fff181.chunk.js.map": "/nyblecraft-test-task/static/js/2.d9fff181.chunk.js.map",
     "index.html": "/nyblecraft-test-task/index.html",
-    "static/css/main.56e42a21.chunk.css.map": "/nyblecraft-test-task/static/css/main.56e42a21.chunk.css.map",
+    "static/css/main.91cab4d5.chunk.css.map": "/nyblecraft-test-task/static/css/main.91cab4d5.chunk.css.map",
     "static/js/2.d9fff181.chunk.js.LICENSE.txt": "/nyblecraft-test-task/static/js/2.d9fff181.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.5ce528e3.js",
     "static/js/2.d9fff181.chunk.js",
-    "static/css/main.56e42a21.chunk.css",
-    "static/js/main.4b0f7171.chunk.js"
+    "static/css/main.91cab4d5.chunk.css",
+    "static/js/main.297ee340.chunk.js"
   ]
 }
